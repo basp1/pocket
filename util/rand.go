@@ -1,4 +1,4 @@
-package math
+package util
 
 func Prob(size int, values []interface{}, probs []float32) []interface{} {
 	result := make([]interface{}, 0, size)
