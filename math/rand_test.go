@@ -6,10 +6,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTree(T *testing.T) {
+func TestProb(T *testing.T) {
 	values := []interface{}{'a', 'b', 'c'}
 
-	probs := Probs(10, values, []float32{0.2, 0.2, 0.6})
+	probs := Prob(10, values, []float32{0.2, 0.2, 0.6})
 
 	assert.Equal(T, 'a', probs[0])
 	assert.Equal(T, 'a', probs[1])

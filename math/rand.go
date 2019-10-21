@@ -1,6 +1,6 @@
 package math
 
-func Probs(size int, values []interface{}, probs []float32) []interface{} {
+func Prob(size int, values []interface{}, probs []float32) []interface{} {
 	result := make([]interface{}, 0, size)
 
 	n := len(probs)
@@ -21,7 +21,7 @@ func Probs(size int, values []interface{}, probs []float32) []interface{} {
 	return result
 }
 
-func Probsi(size int, values []int, probs []float32) []int {
+func ProbInt(size int, values []int, probs []float32) []int {
 	result := make([]int, 0, size)
 
 	n := len(probs)
