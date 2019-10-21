@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func selectMinInt(a interface{}, b interface{}) interface{} {
+func selectMaxInt(a interface{}, b interface{}) interface{} {
 	i := a.(int)
 	j := b.(int)
 	if i > j {
@@ -18,7 +18,7 @@ func selectMinInt(a interface{}, b interface{}) interface{} {
 }
 
 func TestSegmentTreeGetRangeA(T *testing.T) {
-	u := New(int(math.MinInt32), selectMinInt, []interface{}{1})
+	u := New(int(math.MinInt32), selectMaxInt, []interface{}{1})
 
 	assert.Equal(T, 1, u.GetTop())
 	assert.Equal(T, 1, u.GetRange(0, 0))
@@ -26,7 +26,7 @@ func TestSegmentTreeGetRangeA(T *testing.T) {
 }
 
 func TestSegmentTreeGetRangeB(T *testing.T) {
-	u := New(int(math.MinInt32), selectMinInt, []interface{}{3, 8, 6, 4, 2, 5, 9, 0, 7, 1})
+	u := New(int(math.MinInt32), selectMaxInt, []interface{}{3, 8, 6, 4, 2, 5, 9, 0, 7, 1})
 
 	assert.Equal(T, 9, u.GetTop())
 	assert.Equal(T, 9, u.GetRange(0, 9))
@@ -40,7 +40,7 @@ func TestSegmentTreeGetRangeB(T *testing.T) {
 }
 
 func TestSegmentTreeGetRangeC(T *testing.T) {
-	u := New(int(math.MinInt32), selectMinInt, []interface{}{5, 4, 3, 2, 1})
+	u := New(int(math.MinInt32), selectMaxInt, []interface{}{5, 4, 3, 2, 1})
 
 	assert.Equal(T, 5, u.GetTop())
 	assert.Equal(T, 3, u.GetRange(2, 4))
@@ -52,9 +52,9 @@ func TestSegmentTreeGetRangeC(T *testing.T) {
 func TestSegmentTreeSetA(T *testing.T) {
 	values := []interface{}{3, 8, 6, 4, 2, 5, 9, 0, 7, 1}
 
-	u := New(int(math.MinInt32), selectMinInt, values)
+	u := New(int(math.MinInt32), selectMaxInt, values)
 
-	v := Empty(int(math.MinInt32), selectMinInt, 10)
+	v := Empty(int(math.MinInt32), selectMaxInt, 10)
 
 	assert.False(T, u.Equals(v))
 
@@ -68,7 +68,7 @@ func TestSegmentTreeSetA(T *testing.T) {
 func TestSegmentTreeSetB(T *testing.T) {
 	values := []interface{}{3, 8, 6, 4, 2, 5, 9, 0, 7, 1}
 
-	u := New(int(math.MinInt32), selectMinInt, values)
+	u := New(int(math.MinInt32), selectMaxInt, values)
 
 	u.Set(6, 0)
 

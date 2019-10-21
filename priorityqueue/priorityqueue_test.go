@@ -7,16 +7,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func selectMinInt(a interface{}, b interface{}) interface{} {
+	i := a.(int)
+	j := b.(int)
+	if i < j {
+		return i
+	} else {
+		return j
+	}
+}
+
 func TestPriorityQueuetPushA(T *testing.T) {
-	pq := New(func(a, b interface{}) interface{} {
-		i := a.(int)
-		j := b.(int)
-		if i < j {
-			return i
-		} else {
-			return j
-		}
-	})
+	pq := New(selectMinInt)
 
 	pq.Push(3)
 	assert.Equal(T, 3, pq.GetTop().(int))
@@ -40,15 +42,7 @@ func TestPriorityQueuetPushA(T *testing.T) {
 }
 
 func TestPriorityQueuetPushB(T *testing.T) {
-	pq := New(func(a, b interface{}) interface{} {
-		i := a.(int)
-		j := b.(int)
-		if i < j {
-			return i
-		} else {
-			return j
-		}
-	})
+	pq := New(selectMinInt)
 
 	for i := 8; i >= 0; i-- {
 		pq.Push(i)
@@ -63,15 +57,7 @@ func TestPriorityQueuetPushB(T *testing.T) {
 }
 
 func TestPriorityQueuetPopA(T *testing.T) {
-	pq := New(func(a, b interface{}) interface{} {
-		i := a.(int)
-		j := b.(int)
-		if i < j {
-			return i
-		} else {
-			return j
-		}
-	})
+	pq := New(selectMinInt)
 
 	pq.Push(18)
 	pq.Push(19)
@@ -89,15 +75,7 @@ func TestPriorityQueuetPopA(T *testing.T) {
 }
 
 func TestPriorityQueuetPopB(T *testing.T) {
-	pq := New(func(a, b interface{}) interface{} {
-		i := a.(int)
-		j := b.(int)
-		if i < j {
-			return i
-		} else {
-			return j
-		}
-	})
+	pq := New(selectMinInt)
 
 	for i := 9; i >= 1; i-- {
 		pq.Push(i)
@@ -124,15 +102,7 @@ func TestPriorityQueuetPopB(T *testing.T) {
 }
 
 func TestPriorityQueuetPopC(T *testing.T) {
-	pq := New(func(a, b interface{}) interface{} {
-		i := a.(int)
-		j := b.(int)
-		if i < j {
-			return i
-		} else {
-			return j
-		}
-	})
+	pq := New(selectMinInt)
 
 	N := 20
 
