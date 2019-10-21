@@ -1,7 +1,7 @@
 package tree
 
 import (
-	"pocket/graph"
+	"github.com/basp1/pocket/graph"
 )
 
 type Tree struct {

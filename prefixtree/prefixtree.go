@@ -1,7 +1,7 @@
 package prefixtree
 
 import (
-	"pocket/tree"
+	"github.com/basp1/pocket/tree"
 )
 
 type PrefixTree struct {
