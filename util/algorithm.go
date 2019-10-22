@@ -24,3 +24,7 @@ func MaxInt(a, b int) int {
 func PopInt(array []int) (int, []int) {
 	return array[len(array)-1], array[:len(array)-1]
 }
+
+func LastInt(array []int) int {
+	return array[len(array)-1]
+}
