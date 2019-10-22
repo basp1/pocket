@@ -20,3 +20,7 @@ func MaxInt(a, b int) int {
 	}
 	return b
 }
+
+func PopInt(array []int) (int, []int) {
+	return array[len(array)-1], array[:len(array)-1]
+}
