@@ -27,6 +27,18 @@ func New(capacity int) *Intlist {
 	return self
 }
 
+func (self *Intlist) Resize(newCapacity int) {
+	if self.capacity > newCapacity {
+		panic("capacity > newCapacity")
+	}
+
+	for i := self.capacity; i < newCapacity; i++ {
+		self.values = append(self.values, EMPTY)
+	}
+
+	self.capacity = newCapacity
+}
+
 func (self *Intlist) IsEmpty() bool {
 	return 0 == self.length
 }

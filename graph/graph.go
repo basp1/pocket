@@ -1,5 +1,9 @@
 package graph
 
+import (
+	"github.com/basp1/pocket/intlist"
+)
+
 const NIL = -1
 
 type Graph struct {
@@ -13,6 +17,8 @@ type Graph struct {
 
 	Vertices []interface{}
 	Edges    []interface{}
+
+	intlist *intlist.Intlist
 }
 
 func New() *Graph {
@@ -20,7 +26,9 @@ func New() *Graph {
 
 	self.VertexCount = 0
 	self.EdgeCount = 0
+
 	self.Free = NIL
+	self.intlist = intlist.New(0)
 
 	return self
 }
@@ -310,6 +318,22 @@ func (self *Graph) GetAdjacent(vertex int) []int {
 	}
 
 	return adjacent
+}
+
+func (self *Graph) GetDegree(vertex int) int {
+	if vertex < 0 || vertex >= self.VertexCount {
+		panic("vertex not in [0; VertexCount)")
+	}
+
+	degree := 0
+	j := self.From[vertex]
+
+	for NIL != j {
+		degree += 1
+		j = self.Next[j]
+	}
+
+	return degree
 }
 
 func (self *Graph) GetEdges(vertex int) []int {
