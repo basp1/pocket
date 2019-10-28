@@ -108,6 +108,12 @@ func (self *ByteBuffer) Get() byte {
 	return self.get(i)
 }
 
+func (self *ByteBuffer) GetUint16() uint16 {
+	i := self.GetPosition()
+	self.SetPosition(i + 2)
+	return self.getUint16(i)
+}
+
 func (self *ByteBuffer) GetUint32() uint32 {
 	i := self.GetPosition()
 	self.SetPosition(i + 4)
