@@ -23,6 +23,16 @@ func New(capacity int) *ByteBuffer {
 	return self
 }
 
+func OfArray(array []byte) *ByteBuffer {
+	self := &ByteBuffer{}
+
+	self.capacity = len(array)
+	self.data = array
+	self.local = 0
+
+	return self
+}
+
 func (self *ByteBuffer) GetPosition() int {
 	return self.local
 }
@@ -190,7 +200,7 @@ func (self *ByteBuffer) Reserve(newCapacity int) {
 			newLen = math.MaxInt32
 		}
 
-		if uint64(len(self.data)) < newLen {
+		if arrayLen < newLen {
 			tmp := make([]byte, newLen)
 			for i := 0; i < self.capacity; i++ {
 				tmp[i] = self.data[i]

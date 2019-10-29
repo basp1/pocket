@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestByteBufferA(T *testing.T) {
+func TestByteBufferUint(T *testing.T) {
 	bb := New(6)
 	assert.Equal(T, 0, bb.GetPosition())
 
