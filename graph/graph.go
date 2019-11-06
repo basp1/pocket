@@ -107,7 +107,7 @@ func (self *Graph) HasEdge(From int, To int) bool {
 	return false
 }
 
-func (self *Graph) AddEdge(From int, To int, edgeValue interface{}) {
+func (self *Graph) AddEdge(From int, To int, edgeValue interface{}) int {
 	if From < 0 || From >= self.VertexCount {
 		panic("vertex not in [0; VertexCount)")
 	}
@@ -134,6 +134,8 @@ func (self *Graph) AddEdge(From int, To int, edgeValue interface{}) {
 	self.From[From] = p
 
 	self.EdgeCount += 1
+
+	return p
 }
 
 func (self *Graph) RemoveEdge(From int, To int) {
